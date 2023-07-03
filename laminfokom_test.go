@@ -47,12 +47,12 @@ import (
 
 func TestGetDataDataAkreditas(t *testing.T) {
 	stats := "status"
-	data := GetDataDataAkreditas(stats)
+	data := GetDataAkreditas(stats)
 	fmt.Println(data)
 }
 func TestGetDataDataProgramStudi(t *testing.T) {
 	stats := "programstudi"
-	data := GetDataDataProgramStudi(stats)
+	data := GetDataProgramStudi(stats)
 	fmt.Println(data)
 }
 

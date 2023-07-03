@@ -51,12 +51,26 @@ func InsertProfile(db string, profile Profile) (insertedID interface{}) {
 	return insertResult.InsertedID
 }
 
-func GetDataDataAkreditas(stats string) (data []DataAkreditas) {
-	user := MongoConnect("infokomdb").Collection("dataakreditas").
+//	func GetDataDataAkreditas(stats string) (data []DataAkreditas) {
+//		user := MongoConnect("infokomdb").Collection("dataakreditas").
+//		// filter := bson.M{"status": stats}
+//		// cursor, err := user.Find(context.TODO(), filter)
+//		fmt.Println("GetDataDataAkreditas :", err)
+//		if err != nil {
+//		}
+//		err = cursor.All(context.TODO(), &data)
+//		if err != nil {
+//			fmt.Println(err)
+//		}
+//		return
+//	}
+
+func GetDataAkreditas(stats string) (data []DataAkreditas) {
+	user := MongoConnect("infokomdb").Collection("dataAkreditas")
 	filter := bson.M{"status": stats}
 	cursor, err := user.Find(context.TODO(), filter)
 	if err != nil {
-		fmt.Println("GetDataDataAkreditas :", err)
+		fmt.Println("GetDataAkreditas :", err)
 	}
 	err = cursor.All(context.TODO(), &data)
 	if err != nil {
@@ -64,12 +78,27 @@ func GetDataDataAkreditas(stats string) (data []DataAkreditas) {
 	}
 	return
 }
-func GetDataDataProgramStudi(stats string) (data []DataProgramStudi) {
-	user := MongoConnect("infokomdb").Collection("dataprogramstudi").
-	filter := bson.M{"programstudi": stats}
+
+// func GetDataProgramStudi(stats string) (data []DataProgramStudi) {
+// 	user := MongoConnect("infokomdb").Collection("dataprogramstudi").
+// 	filter := bson.M{"programstudi": stats}
+// 	cursor, err := user.Find(context.TODO(), filter)
+// 	if err != nil {
+// 		fmt.Println("GetDataDataProgramStudi :", err)
+// 	}
+// 	err = cursor.All(context.TODO(), &data)
+// 	if err != nil {
+// 		fmt.Println(err)
+// 	}
+// 	return
+// }
+
+func GetDataProgramStudi(stats string) (data []DataProgramStudi) {
+	user := MongoConnect("infokomdb").Collection("dataprogramstudi")
+	filter := bson.M{"program": stats}
 	cursor, err := user.Find(context.TODO(), filter)
 	if err != nil {
-		fmt.Println("GetDataDataProgramStudi :", err)
+		fmt.Println("GetDataProgramStudi :", err)
 	}
 	err = cursor.All(context.TODO(), &data)
 	if err != nil {
@@ -77,12 +106,27 @@ func GetDataDataProgramStudi(stats string) (data []DataProgramStudi) {
 	}
 	return
 }
+
+// func GetDataProfile(stats string) (data []Profile) {
+// 	user := MongoConnect("infokomdb").Collection("profile").
+// 	filter := bson.M{"isi_satu": stats}
+// 	cursor, err := user.Find(context.TODO(), filter)
+// 	if err != nil {
+// 		fmt.Println("GetDataProfile :", err)
+// 	}
+// 	err = cursor.All(context.TODO(), &data)
+// 	if err != nil {
+// 		fmt.Println(err)
+// 	}
+// 	return
+// }
+
 func GetDataProfile(stats string) (data []Profile) {
-	user := MongoConnect("infokomdb").Collection("profile").
+	user := MongoConnect("infokomdb").Collection("Profile")
 	filter := bson.M{"isi_satu": stats}
 	cursor, err := user.Find(context.TODO(), filter)
 	if err != nil {
-		fmt.Println("GetDataProfile :", err)
+		fmt.Println("GetDataProgramStudi :", err)
 	}
 	err = cursor.All(context.TODO(), &data)
 	if err != nil {
