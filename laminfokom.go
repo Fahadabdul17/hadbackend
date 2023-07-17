@@ -27,7 +27,7 @@ func InsertOneDoc(db string, collection string, doc interface{}) (insertedID int
 	}
 	return insertResult.InsertedID
 }
-func InsertDataAkreditas(db string, dataakreditas DataAkreditas) (insertedID interface{}) {
+func InsertDataAkreditas(db string, dataakreditas Akreditas) (insertedID interface{}) {
 	insertResult, err := MongoConnect(db).Collection("dataakreditas").InsertOne(context.TODO(), dataakreditas)
 	if err != nil {
 		fmt.Printf("InsertDataAkreditas: %v\n", err)
@@ -35,7 +35,7 @@ func InsertDataAkreditas(db string, dataakreditas DataAkreditas) (insertedID int
 	return insertResult.InsertedID
 }
 
-func InsertDataProgramStudi(db string, dataprogramstudi DataProgramStudi) (insertedID interface{}) {
+func InsertDataProgramStudi(db string, dataprogramstudi ProgramStudi) (insertedID interface{}) {
 	insertResult, err := MongoConnect(db).Collection("dataprogramstudi").InsertOne(context.TODO(), dataprogramstudi)
 	if err != nil {
 		fmt.Printf("InsertDataProgramStudi: %v\n", err)
@@ -65,7 +65,7 @@ func InsertProfile(db string, profile Profile) (insertedID interface{}) {
 //		return
 //	}
 
-func GetDataAkreditas(stats string) (data []DataAkreditas) {
+func GetDataAkreditas(stats string) (data []Akreditas) {
 	user := MongoConnect("infokomdb").Collection("dataAkreditas")
 	filter := bson.M{"status": stats}
 	cursor, err := user.Find(context.TODO(), filter)
@@ -93,7 +93,7 @@ func GetDataAkreditas(stats string) (data []DataAkreditas) {
 // 	return
 // }
 
-func GetDataProgramStudi(stats string) (data []DataProgramStudi) {
+func GetDataProgramStudi(stats string) (data []ProgramStudi) {
 	user := MongoConnect("infokomdb").Collection("dataprogramstudi")
 	filter := bson.M{"program": stats}
 	cursor, err := user.Find(context.TODO(), filter)

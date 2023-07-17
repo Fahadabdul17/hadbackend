@@ -45,12 +45,12 @@ import (
 // 	}
 // }
 
-func TestGetDataDataAkreditas(t *testing.T) {
+func TestGetDataAkreditas(t *testing.T) {
 	stats := "status"
 	data := GetDataAkreditas(stats)
 	fmt.Println(data)
 }
-func TestGetDataDataProgramStudi(t *testing.T) {
+func TestGetDataProgramStudi(t *testing.T) {
 	stats := "programstudi"
 	data := GetDataProgramStudi(stats)
 	fmt.Println(data)
